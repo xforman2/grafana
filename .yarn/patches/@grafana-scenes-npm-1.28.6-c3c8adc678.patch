@@ -1,0 +1,44 @@
+diff --git a/dist/esm/core/PanelBuilders/FieldConfigBuilders.js b/dist/esm/core/PanelBuilders/FieldConfigBuilders.js
+index 72b146e80902becb1e9344c99fb0f80cbb164d24..45dc8431ec3d09b45172262952addca8ddb3a359 100644
+--- a/dist/esm/core/PanelBuilders/FieldConfigBuilders.js
++++ b/dist/esm/core/PanelBuilders/FieldConfigBuilders.js
+@@ -2,7 +2,7 @@ import { defaultFieldConfig } from '@grafana/schema/dist/esm/raw/composable/barc
+ import { defaultFieldConfig as defaultFieldConfig$1 } from '@grafana/schema/dist/esm/raw/composable/histogram/panelcfg/x/HistogramPanelCfg_types.gen';
+ import { defaultFieldConfig as defaultFieldConfig$2 } from '@grafana/schema/dist/esm/raw/composable/statetimeline/panelcfg/x/StateTimelinePanelCfg_types.gen';
+ import { defaultFieldConfig as defaultFieldConfig$3 } from '@grafana/schema/dist/esm/raw/composable/statushistory/panelcfg/x/StatusHistoryPanelCfg_types.gen';
+-import { defaultScatterFieldConfig } from '@grafana/schema/dist/esm/raw/composable/xychart/panelcfg/x/XYChartPanelCfg_types.gen';
++import { defaultFieldConfig as defaultFieldConfig$4 } from '@grafana/schema/dist/esm/raw/composable/xychart/panelcfg/x/XYChartPanelCfg_types.gen';
+ import { FieldConfigBuilder } from './FieldConfigBuilder.js';
+ 
+ const FieldConfigBuilders = {
+@@ -67,7 +67,7 @@ const FieldConfigBuilders = {
+     return new FieldConfigBuilder();
+   },
+   xychart() {
+-    return new FieldConfigBuilder(() => defaultScatterFieldConfig);
++    return new FieldConfigBuilder(() => defaultFieldConfig$4);
+   }
+ };
+ 
+diff --git a/dist/esm/core/PanelBuilders/index.js b/dist/esm/core/PanelBuilders/index.js
+index 0ac0887f0e81eb7dd7ad21399ba916e7b890a500..b37a9bebd9f1fc41b54cbf5549113f49b205b1f8 100644
+--- a/dist/esm/core/PanelBuilders/index.js
++++ b/dist/esm/core/PanelBuilders/index.js
+@@ -12,7 +12,7 @@ import { defaultOptions as defaultOptions$a, defaultFieldConfig as defaultFieldC
+ import { defaultOptions as defaultOptions$b, defaultFieldConfig as defaultFieldConfig$3 } from '@grafana/schema/dist/esm/raw/composable/statushistory/panelcfg/x/StatusHistoryPanelCfg_types.gen';
+ import { defaultOptions as defaultOptions$c } from '@grafana/schema/dist/esm/raw/composable/table/panelcfg/x/TablePanelCfg_types.gen';
+ import { defaultOptions as defaultOptions$d } from '@grafana/schema/dist/esm/raw/composable/text/panelcfg/x/TextPanelCfg_types.gen';
+-import { defaultOptions as defaultOptions$e, defaultScatterFieldConfig } from '@grafana/schema/dist/esm/raw/composable/xychart/panelcfg/x/XYChartPanelCfg_types.gen';
++import { defaultOptions as defaultOptions$e, defaultFieldConfig as defaultFieldConfig$4 } from '@grafana/schema/dist/esm/raw/composable/xychart/panelcfg/x/XYChartPanelCfg_types.gen';
+ import { VizPanelBuilder } from './VizPanelBuilder.js';
+ import 'lodash';
+ import '@grafana/data';
+@@ -107,7 +107,7 @@ const PanelBuilders = {
+       "xychart",
+       "10.0.0",
+       () => defaultOptions$e,
+-      () => defaultScatterFieldConfig
++      () => defaultFieldConfig$4
+     );
+   }
+ };

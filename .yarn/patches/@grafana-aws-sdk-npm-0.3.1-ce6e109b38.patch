@@ -1,0 +1,13 @@
+diff --git a/package.json b/package.json
+index 3e18bdc664afdaff03d09b46951faccb1a9954e7..b0e202cf2e7bae1c52779e8954e07793a9f81172 100644
+--- a/package.json
++++ b/package.json
+@@ -3,7 +3,7 @@
+   "version": "0.3.1",
+   "description": "Common AWS features for grafana",
+   "main": "dist/index.js",
+-  "module": "dist/esm/index.js",
++  "module": "dist/esm/src/index.js",
+   "types": "dist/index.d.ts",
+   "publishConfig": {
+     "access": "public"
