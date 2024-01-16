@@ -34,7 +34,7 @@ export function ContactPointSelector({ alertManager, contactPoints, onSelectCont
 
   return (
     <Stack direction="column">
-      <Field label="Contact point">
+      <Field label="Contact point" data-testid="contact-point-picker">
         <InputControl
           render={({ field: { onChange, ref, ...field }, fieldState: { error } }) => (
             <>
