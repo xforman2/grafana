@@ -2,18 +2,18 @@ import { CloudMonitoringQuery as CloudMonitoringQueryBase, QueryType } from '../
 
 export { QueryType };
 export {
-  TimeSeriesList,
+  type TimeSeriesList,
   PreprocessorType,
-  TimeSeriesQuery,
-  SLOQuery,
-  MetricQuery,
+  type TimeSeriesQuery,
+  type SLOQuery,
+  type MetricQuery,
   MetricKind,
-  LegacyCloudMonitoringAnnotationQuery,
-  Filter,
+  type LegacyCloudMonitoringAnnotationQuery,
+  type Filter,
   AlignmentTypes,
   ValueTypes,
   MetricFindQueryTypes,
-  PromQLQuery,
+  type PromQLQuery,
 } from '../dataquery.gen';
 
 /**
