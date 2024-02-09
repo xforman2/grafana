@@ -752,6 +752,9 @@
     },
     "webhook_url": {
      "$ref": "#/definitions/SecretURL"
+    },
+    "webhook_url_file": {
+     "type": "string"
     }
    },
    "title": "DiscordConfig configures notifications via Discord.",
@@ -2028,6 +2031,9 @@
     "send_resolved": {
      "type": "boolean"
     },
+    "summary": {
+     "type": "string"
+    },
     "text": {
      "type": "string"
     },
@@ -2036,6 +2042,9 @@
     },
     "webhook_url": {
      "$ref": "#/definitions/SecretURL"
+    },
+    "webhook_url_file": {
+     "type": "string"
     }
    },
    "type": "object"
@@ -4532,6 +4541,7 @@
    "type": "object"
   },
   "alertGroup": {
+   "description": "AlertGroup alert group",
    "properties": {
     "alerts": {
      "description": "alerts",
@@ -4555,6 +4565,7 @@
    "type": "object"
   },
   "alertGroups": {
+   "description": "AlertGroups alert groups",
    "items": {
     "$ref": "#/definitions/alertGroup"
    },
@@ -4659,6 +4670,7 @@
    "type": "object"
   },
   "gettableAlert": {
+   "description": "GettableAlert gettable alert",
    "properties": {
     "annotations": {
      "$ref": "#/definitions/labelSet"
@@ -4769,7 +4781,6 @@
    "type": "object"
   },
   "gettableSilences": {
-   "description": "GettableSilences gettable silences",
    "items": {
     "$ref": "#/definitions/gettableSilence"
    },
@@ -4920,6 +4931,7 @@
    "type": "array"
   },
   "postableSilence": {
+   "description": "PostableSilence postable silence",
    "properties": {
     "comment": {
      "description": "comment",

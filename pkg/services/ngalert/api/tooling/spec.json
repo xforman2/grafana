@@ -1423,7 +1423,6 @@
         "parameters": [
           {
             "type": "string",
-            "description": "The UID of the rule folder",
             "name": "Namespace",
             "in": "path",
             "required": true
@@ -2077,6 +2076,12 @@
         "responses": {
           "200": {
             "$ref": "#/responses/GetReceiverResponse"
+          },
+          "403": {
+            "description": "PermissionDenied",
+            "schema": {
+              "$ref": "#/definitions/PermissionDenied"
+            }
           },
           "404": {
             "description": "NotFound",
@@ -4310,6 +4315,9 @@
         },
         "webhook_url": {
           "$ref": "#/definitions/SecretURL"
+        },
+        "webhook_url_file": {
+          "type": "string"
         }
       }
     },
@@ -5588,6 +5596,9 @@
         "send_resolved": {
           "type": "boolean"
         },
+        "summary": {
+          "type": "string"
+        },
         "text": {
           "type": "string"
         },
@@ -5596,6 +5607,9 @@
         },
         "webhook_url": {
           "$ref": "#/definitions/SecretURL"
+        },
+        "webhook_url_file": {
+          "type": "string"
         }
       }
     },
@@ -8117,7 +8131,6 @@
       "$ref": "#/definitions/alertGroup"
     },
     "alertGroups": {
-      "description": "AlertGroups alert groups",
       "type": "array",
       "items": {
         "$ref": "#/definitions/alertGroup"
@@ -8344,6 +8357,7 @@
       "$ref": "#/definitions/gettableSilences"
     },
     "integration": {
+      "description": "Integration integration",
       "type": "object",
       "required": [
         "name",
@@ -8488,6 +8502,7 @@
       }
     },
     "postableSilence": {
+      "description": "PostableSilence postable silence",
       "type": "object",
       "required": [
         "comment",

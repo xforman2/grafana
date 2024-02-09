@@ -14421,6 +14421,9 @@
         },
         "webhook_url": {
           "$ref": "#/definitions/SecretURL"
+        },
+        "webhook_url_file": {
+          "type": "string"
         }
       }
     },
@@ -16419,6 +16422,9 @@
         "send_resolved": {
           "type": "boolean"
         },
+        "summary": {
+          "type": "string"
+        },
         "text": {
           "type": "string"
         },
@@ -16427,6 +16433,9 @@
         },
         "webhook_url": {
           "$ref": "#/definitions/SecretURL"
+        },
+        "webhook_url_file": {
+          "type": "string"
         }
       }
     },
@@ -21670,6 +21679,7 @@
       }
     },
     "alertGroup": {
+      "description": "AlertGroup alert group",
       "type": "object",
       "required": [
         "alerts",
@@ -21693,6 +21703,7 @@
       }
     },
     "alertGroups": {
+      "description": "AlertGroups alert groups",
       "type": "array",
       "items": {
         "$ref": "#/definitions/alertGroup"
@@ -21825,6 +21836,7 @@
       }
     },
     "gettableAlert": {
+      "description": "GettableAlert gettable alert",
       "type": "object",
       "required": [
         "labels",
@@ -21935,7 +21947,6 @@
       }
     },
     "gettableSilences": {
-      "description": "GettableSilences gettable silences",
       "type": "array",
       "items": {
         "$ref": "#/definitions/gettableSilence"
@@ -22086,6 +22097,7 @@
       }
     },
     "postableSilence": {
+      "description": "PostableSilence postable silence",
       "type": "object",
       "required": [
         "comment",

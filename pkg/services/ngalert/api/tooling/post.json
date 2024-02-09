@@ -752,6 +752,9 @@
     },
     "webhook_url": {
      "$ref": "#/definitions/SecretURL"
+    },
+    "webhook_url_file": {
+     "type": "string"
     }
    },
    "title": "DiscordConfig configures notifications via Discord.",
@@ -2028,6 +2031,9 @@
     "send_resolved": {
      "type": "boolean"
     },
+    "summary": {
+     "type": "string"
+    },
     "text": {
      "type": "string"
     },
@@ -2036,6 +2042,9 @@
     },
     "webhook_url": {
      "$ref": "#/definitions/SecretURL"
+    },
+    "webhook_url_file": {
+     "type": "string"
     }
    },
    "type": "object"
@@ -4556,7 +4565,6 @@
    "type": "object"
   },
   "alertGroups": {
-   "description": "AlertGroups alert groups",
    "items": {
     "$ref": "#/definitions/alertGroup"
    },
@@ -4778,6 +4786,7 @@
    "type": "array"
   },
   "integration": {
+   "description": "Integration integration",
    "properties": {
     "lastNotifyAttempt": {
      "description": "A timestamp indicating the last attempt to deliver a notification regardless of the outcome.\nFormat: date-time",
@@ -4921,6 +4930,7 @@
    "type": "array"
   },
   "postableSilence": {
+   "description": "PostableSilence postable silence",
    "properties": {
     "comment": {
      "description": "comment",
@@ -6479,7 +6489,6 @@
     "operationId": "RoutePostRulesGroupForExport",
     "parameters": [
      {
-      "description": "The UID of the rule folder",
       "in": "path",
       "name": "Namespace",
       "required": true,
@@ -7133,6 +7142,12 @@
     "responses": {
      "200": {
       "$ref": "#/responses/GetReceiverResponse"
+     },
+     "403": {
+      "description": "PermissionDenied",
+      "schema": {
+       "$ref": "#/definitions/PermissionDenied"
+      }
      },
      "404": {
       "description": "NotFound",
