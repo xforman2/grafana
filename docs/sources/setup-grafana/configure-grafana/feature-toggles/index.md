@@ -178,6 +178,7 @@ Experimental features might be changed or removed without prior notice.
 | `nodeGraphDotLayout`                        | Changed the layout algorithm for the node graph                                                                                                                                                                                                                                   |
 | `newPDFRendering`                           | New implementation for the dashboard to PDF rendering                                                                                                                                                                                                                             |
 | `kubernetesAggregator`                      | Enable grafana aggregator                                                                                                                                                                                                                                                         |
+| `removeCustomScrollbars`                    | Removes CustomScrollbar from the UI, relying on native browser scrollbars                                                                                                                                                                                                         |
 
 ## Development feature toggles
 

@@ -658,4 +658,8 @@ const (
 	// FlagGroupByVariable
 	// Enable groupBy variable support in scenes dashboards
 	FlagGroupByVariable = "groupByVariable"
+
+	// FlagRemoveCustomScrollbars
+	// Removes CustomScrollbar from the UI, relying on native browser scrollbars
+	FlagRemoveCustomScrollbars = "removeCustomScrollbars"
 )

@@ -1288,7 +1288,7 @@
         "name": "clientTokenRotation",
         "resourceVersion": "1707928895402",
         "creationTimestamp": "2024-02-14T16:41:35Z",
-        "deletionTimestamp": "2024-02-16T10:26:09Z"
+        "deletionTimestamp": "2024-02-16T15:15:36Z"
       },
       "spec": {
         "description": "Replaces the current in-request token rotation so that the client initiates the rotation",
@@ -2120,6 +2120,33 @@
         "stage": "experimental",
         "codeowner": "@grafana/plugins-platform-backend",
         "requiresRestart": true
+      }
+    },
+    {
+      "metadata": {
+        "name": "removeCustomScrollbar",
+        "resourceVersion": "1708096144940",
+        "creationTimestamp": "2024-02-16T15:09:04Z",
+        "deletionTimestamp": "2024-02-16T15:15:36Z"
+      },
+      "spec": {
+        "description": "Removes CustomScrollbar from the UI, relying on native browser scrollbars",
+        "stage": "experimental",
+        "codeowner": "@grafana/grafana-frontend-platform",
+        "frontend": true
+      }
+    },
+    {
+      "metadata": {
+        "name": "removeCustomScrollbars",
+        "resourceVersion": "1708096533467",
+        "creationTimestamp": "2024-02-16T15:15:33Z"
+      },
+      "spec": {
+        "description": "Removes CustomScrollbar from the UI, relying on native browser scrollbars",
+        "stage": "experimental",
+        "codeowner": "@grafana/grafana-frontend-platform",
+        "frontend": true
       }
     }
   ]

@@ -1214,6 +1214,13 @@ var (
 			HideFromDocs:      true,
 			HideFromAdminPage: true,
 		},
+		{
+			Name:         "removeCustomScrollbars",
+			Description:  "Removes CustomScrollbar from the UI, relying on native browser scrollbars",
+			Stage:        FeatureStageExperimental,
+			FrontendOnly: true,
+			Owner:        grafanaFrontendPlatformSquad,
+		},
 	}
 )
 
