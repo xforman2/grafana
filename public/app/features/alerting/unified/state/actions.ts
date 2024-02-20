@@ -1,7 +1,8 @@
 import { AsyncThunk, createAsyncThunk } from '@reduxjs/toolkit';
 import { isEmpty } from 'lodash';
 
-import { locationService } from '@grafana/runtime';
+import { config, locationService } from '@grafana/runtime';
+import { contextSrv } from 'app/core/core';
 import {
   AlertmanagerAlert,
   AlertManagerCortexConfig,
@@ -36,6 +37,8 @@ import { backendSrv } from '../../../../core/services/backend_srv';
 import {
   logInfo,
   LogMessages,
+  trackSwitchToPoliciesRouting,
+  trackSwitchToSimplifiedRouting,
   withPerformanceLogging,
   withPromRulesMetadataLogging,
   withRulerRulesMetadataLogging,
@@ -77,7 +80,7 @@ import { makeAMLink } from '../utils/misc';
 import { AsyncRequestMapSlice, withAppEvents, withSerializedError } from '../utils/redux';
 import * as ruleId from '../utils/rule-id';
 import { getRulerClient } from '../utils/rulerClient';
-import { getAlertInfo, isRulerNotSupportedResponse } from '../utils/rules';
+import { getAlertInfo, isGrafanaRulerRule, isRulerNotSupportedResponse } from '../utils/rules';
 import { safeParseDurationstr } from '../utils/time';
 
 function getDataSourceConfig(getState: () => unknown, rulesSourceName: string) {
@@ -456,6 +459,32 @@ export const saveRuleFormAction = createAsyncThunk(
             const rulerConfig = getDataSourceRulerConfig(thunkAPI.getState, GRAFANA_RULES_SOURCE_NAME);
             const rulerClient = getRulerClient(rulerConfig);
             identifier = await rulerClient.saveGrafanaRule(values, evaluateEvery, existing);
+
+            // track if the user switched from simplified routing to policies routing or vice versa
+            if (isGrafanaRulerRule(existing?.rule)) {
+              const ga = existing?.rule.grafana_alert;
+              const existingWasUsingSimplifiedRouting = Boolean(ga?.notification_settings?.receiver);
+              const newValuesUsesSimplifiedRouting = values.manualRouting;
+              const shouldTrackSwitchToSimplifiedRouting =
+                !existingWasUsingSimplifiedRouting && newValuesUsesSimplifiedRouting;
+              const shoouldTrackSwitchToPoliciesRouting =
+                existingWasUsingSimplifiedRouting && !newValuesUsesSimplifiedRouting;
+
+              if (shouldTrackSwitchToSimplifiedRouting) {
+                trackSwitchToSimplifiedRouting({
+                  grafana_version: config.buildInfo.version,
+                  org_id: contextSrv.user.orgId,
+                  user_id: contextSrv.user.id,
+                });
+              }
+              if (shoouldTrackSwitchToPoliciesRouting) {
+                trackSwitchToPoliciesRouting({
+                  grafana_version: config.buildInfo.version,
+                  org_id: contextSrv.user.orgId,
+                  user_id: contextSrv.user.id,
+                });
+              }
+            }
             await thunkAPI.dispatch(fetchRulerRulesAction({ rulesSourceName: GRAFANA_RULES_SOURCE_NAME }));
           } else {
             throw new Error('Unexpected rule form type');

@@ -183,6 +183,14 @@ export const trackInsightsFeedback = async (props: { useful: boolean; panel: str
   reportInteraction('grafana_alerting_insights', { ...defaults, ...props });
 };
 
+export const trackSwitchToSimplifiedRouting = async (props: AlertRuleTrackingProps) => {
+  reportInteraction('grafana_alerting_switch_to_simplified_routing', props);
+};
+
+export const trackSwitchToPoliciesRouting = async (props: AlertRuleTrackingProps) => {
+  reportInteraction('grafana_alerting_switch_to_policies_routing', props);
+};
+
 export type AlertRuleTrackingProps = {
   user_id: number;
   grafana_version?: string;
