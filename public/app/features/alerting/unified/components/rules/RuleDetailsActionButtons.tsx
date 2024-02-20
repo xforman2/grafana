@@ -4,6 +4,7 @@ import React, { Fragment, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { GrafanaTheme2, textUtil, urlUtil } from '@grafana/data';
+import { selectors } from '@grafana/e2e-selectors';
 import { config, useReturnToPrevious } from '@grafana/runtime';
 import {
   Button,
@@ -144,6 +145,7 @@ export const RuleDetailsActionButtons = ({ rule, rulesSource, isViewMode }: Prop
             variant="primary"
             icon="apps"
             href={`d/${encodeURIComponent(dashboardUID)}`}
+            data-testid={selectors.components.AlertRules.toDashboard}
             onClick={() => {
               setReturnToPrevious(rule.name);
             }}
@@ -157,6 +159,7 @@ export const RuleDetailsActionButtons = ({ rule, rulesSource, isViewMode }: Prop
             variant="primary"
             icon="apps"
             target="_blank"
+            data-testid={selectors.components.AlertRules.toDashboard}
             href={`d/${encodeURIComponent(dashboardUID)}`}
           >
             Go to dashboard
