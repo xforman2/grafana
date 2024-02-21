@@ -83,7 +83,7 @@
         "name": "pluginsInstrumentationStatusSource",
         "resourceVersion": "1708108588074",
         "creationTimestamp": "2024-02-16T18:36:28Z",
-        "deletionTimestamp": "2024-02-19T14:18:02Z"
+        "deletionTimestamp": "2024-02-21T14:03:48Z"
       },
       "spec": {
         "description": "Include a status source label for plugin request metrics and logs",
@@ -2122,6 +2122,20 @@
         "stage": "experimental",
         "codeowner": "@grafana/dataviz-squad",
         "frontend": true
+      }
+    },
+    {
+      "metadata": {
+        "name": "scopeFilters",
+        "resourceVersion": "1708524225414",
+        "creationTimestamp": "2024-02-21T14:03:45Z"
+      },
+      "spec": {
+        "description": "enables scope filters",
+        "stage": "experimental",
+        "codeowner": "@grafana/dashboards-squad",
+        "hideFromAdminPage": true,
+        "hideFromDocs": true
       }
     }
   ]
