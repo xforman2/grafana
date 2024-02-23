@@ -136,35 +136,23 @@ export const RuleDetailsActionButtons = ({ rule, rulesSource, isViewMode }: Prop
   }
   if (rule.annotations[Annotation.dashboardUID]) {
     const dashboardUID = rule.annotations[Annotation.dashboardUID];
+    const isReturnToPreviousEnabled = config.featureToggles.returnToPrevious;
     if (dashboardUID) {
       buttons.push(
-        config.featureToggles.returnToPrevious ? (
-          <LinkButton
-            size="sm"
-            key="dashboard"
-            variant="primary"
-            icon="apps"
-            href={`d/${encodeURIComponent(dashboardUID)}`}
-            data-testid={selectors.components.AlertRules.toDashboard}
-            onClick={() => {
-              setReturnToPrevious(rule.name);
-            }}
-          >
-            Go to dashboard
-          </LinkButton>
-        ) : (
-          <LinkButton
-            size="sm"
-            key="dashboard"
-            variant="primary"
-            icon="apps"
-            target="_blank"
-            data-testid={selectors.components.AlertRules.toDashboard}
-            href={`d/${encodeURIComponent(dashboardUID)}`}
-          >
-            Go to dashboard
-          </LinkButton>
-        )
+        <LinkButton
+          size="sm"
+          key="dashboard"
+          variant="primary"
+          icon="apps"
+          href={`d/${encodeURIComponent(dashboardUID)}`}
+          data-testid={selectors.components.AlertRules.toDashboard}
+          target={isReturnToPreviousEnabled ? undefined : '_blank'}
+          onClick={() => {
+            setReturnToPrevious(rule.name);
+          }}
+        >
+          Go to dashboard
+        </LinkButton>
       );
       const panelId = rule.annotations[Annotation.panelID];
       if (panelId) {
